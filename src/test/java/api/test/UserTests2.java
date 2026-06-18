@@ -33,7 +33,7 @@ public class UserTests2 {
 		userData.setPhone(faker.phoneNumber().cellPhone());
 	}
 	
-	@Test(priority=1)
+	//@Test(priority=1)
 	public void testPostUser() {
 		
 		Response res = UserEndPoints2.createUser(userData);
@@ -42,7 +42,7 @@ public class UserTests2 {
 		Assert.assertEquals(res.getStatusCode(), 200);
 	}
 	
-	@Test(priority=2)
+	//@Test(priority=2)
 	public void testGetUser() {
 		
 		Response res = UserEndPoints2.getUser(userData.getUsername());
@@ -51,7 +51,7 @@ public class UserTests2 {
 		
 	}
 	
-	@Test(priority=3)
+	//@Test(priority=3)
 	public void testUpdateUser() {
 		
 		userData.setFirstName(faker.name().firstName());
@@ -64,11 +64,26 @@ public class UserTests2 {
 		Assert.assertEquals(res.statusCode(), 200);
 	}
 	
-	@Test(priority=4)
+	//@Test(priority=4)
 	public void testDeleteUser() {
 		Response res = UserEndPoints2.deleteUser(userData.getUsername());
 		res.then().log().all();
 		
 		Assert.assertEquals(res.statusCode(), 200);
 	}
+	
+	@Test(priority=5)
+	public void testLoginUser() {
+		Response  res= UserEndPoints2.getUserLogin(userData.getUsername());
+		res.then().log().all();
+		Assert.assertEquals(res.statusCode(), 200);
+	}
+	
+	@Test(priority=6)
+	public void testLogoutUser() {
+		Response res = UserEndPoints2.getUserLogout();
+		//res.then().log().all();
+		Assert.assertEquals(res.statusCode(), 200);
+	}
+	
 }

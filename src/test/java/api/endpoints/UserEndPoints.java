@@ -56,5 +56,29 @@ public class UserEndPoints {
 				.get(Routes.delete_url);
 		return res;
 	}
+	//
+	public static Response getUserLogin(String userName) {
+		
+		Response res = given()
+					.contentType(ContentType.JSON)
+					.accept(ContentType.JSON)
+					.queryParam("username", userName)
+				.when()
+					.get(Routes.get_login_url);
+		
+		return res;
+	}
+	
+	public static Response getUserLogout() {
+		
+		Response res = given()
+					.contentType(ContentType.JSON)
+					.accept(ContentType.JSON)
+				.when()
+					.get(Routes.get_logout_url);
+		
+		return res;
+				
+	}
 
 }

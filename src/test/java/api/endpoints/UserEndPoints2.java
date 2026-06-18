@@ -83,5 +83,32 @@ public class UserEndPoints2 {
 				.get(delete_url);
 		return res;
 	}
+	
+	public static Response getUserLogin(String userName) {
+		
+		String get_login_url = getURL().getString("get_login_url");
+		
+		Response res = given()
+					.contentType(ContentType.JSON)
+					.accept(ContentType.JSON)
+					.queryParam("username", userName)
+				.when()
+					.get(get_login_url);
+		
+		return res;
+	}
+	
+	public static Response getUserLogout() {
+		
+		String get_logout_url= getURL().getString("get_logout_url");
+		
+		Response res= given()
+					.contentType(ContentType.JSON)
+					.accept(ContentType.JSON)
+				.when()
+					.get(get_logout_url);
+		
+		return res;
+	}
 
 }
